@@ -1,0 +1,13 @@
+%p#notice= notice
+
+%p
+	%b Title:
+	= @poll.title
+	- @poll.options.each do |option|
+		%p= option.name
+		%p= option.votes.count
+		= button_to 'Vote', vote_poll_option_path(@poll, option), method: :post, class: "btn btn-success"
+
+= link_to 'Edit', edit_poll_path(@poll)
+\|
+= link_to 'Back', polls_path

@@ -1,0 +1,10 @@
+= simple_form_for @poll do |f|
+	= f.input :title, input_html: {  class: "form-control" }
+	%h3 Options
+	#options
+		= f.simple_fields_for :options, @poll.options.limit(4).offset(0) do |option|
+			= render 'option_fields', f: option
+	.links
+		= @poll.options.length
+		= link_to_add_association 'add option', f, :options
+	= f.submit

@@ -1,0 +1,21 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.poll-item {
+	display: inline-block;
+	cursor: pointer;
+	margin: 2em;
+	padding: 10px;
+	min-width: 20em;
+	border: 1px #ccc solid;
+	border-radius: 5px;
+	box-shadow: 2px 2px 4px 0px #ccc;
+	&:hover {
+		box-shadow: 4px 4px 8px 0px #ccc;
+	}
+}
+
+.poll-item-option {
+	font-size: 20px;
+	line-height: 35px;
+}

@@ -1,0 +1,18 @@
+%h1 Listing polls
+%br/
+- @polls.each do |poll|
+  .poll-item
+    %h3= link_to poll.title, poll
+    %hr/
+    -poll.options.each do |option|
+      .poll-item-option
+        = option.name
+        = option.votes.count
+        = button_to "Vote", vote_poll_option_path(poll, option), method: :post, class: "btn btn-success"
+    %hr/
+    = link_to 'Edit', edit_poll_path(poll), class: "btn btn-info"
+    = link_to 'Destroy', poll, :method => :delete, :data => { :confirm => 'Are you sure?' }, class: "btn btn-danger"
+
+%br
+
+= link_to 'New Poll', new_poll_path
