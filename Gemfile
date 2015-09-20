@@ -14,6 +14,7 @@ gem 'simple_form', '~> 3.1.1'
 gem "cocoon"
 gem "omniauth-google-oauth2"
 gem "figaro"
+gem 'jwt'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development, :test do
