@@ -48,8 +48,4 @@ class Api::ApiController < ActionController::Base
     end
   end
 
-  def current_user
-
-  end
-
 end

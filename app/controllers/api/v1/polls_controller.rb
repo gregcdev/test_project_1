@@ -1,7 +1,6 @@
 class Api::V1::PollsController < Api::ApiController
 
-	before_action :set_poll, only: [:show]
-
+	before_action :set_poll, only: [:show, :update, :destroy]
 	before_action :authenticate
 
 	require 'action_view'
@@ -16,7 +15,11 @@ class Api::V1::PollsController < Api::ApiController
 	end
 
 	def show
-		render :json => @poll
+		if @poll
+			render :json => @poll
+		else
+			render :json => {}, :status => 404
+		end
 	end
 
 	def create
@@ -30,28 +33,26 @@ class Api::V1::PollsController < Api::ApiController
 		end
 	end
 
-	def key_gen
-		google_oauth2_certs_uri = URI("https://www.googleapis.com/oauth2/v1/certs")
-		certs = ActiveSupport::JSON.decode(Net::HTTP.get(google_oauth2_certs_uri))
-
-		token = params[:token]
-
-		header = ActiveSupport::JSON.decode(Base64.decode64(token.split(".")[0]))
-
-		cert = OpenSSL::X509::Certificate.new certs[header["kid"]]
-		key = OpenSSL::PKey::RSA.new cert.public_key
-		decoded_token = JWT.decode token, key
-
-		#temp = decoded_token[0]["exp"]
-		temp = DateTime.now.strftime('%s').to_i
-		if temp.to_i < decoded_token[0]["exp"]
-			asd = "vaild"
-		else
-			asd = "expired"
+	def update
+		if @user != @poll.user
+			render :json => {"errors":{"status": "401 Unauthorized", "message": "unauthorized access"}}, :status => :unauthorized
+			return false
 		end
 
-		#render :json => {"exp": decoded_token[0]["exp"], "now": temp, "status": asd}
-		render :json => decoded_token
+		if @poll.update(poll_params)
+			render :show, status: :ok, location: @poll
+		else
+			render json: @poll.errors, status: :unprocessable_entity
+		end
+	end
+
+	def destroy
+		if @user == @poll.user
+			@poll.destroy
+			head :no_content
+		else
+			head :unauthorized
+		end
 	end
 
 	private

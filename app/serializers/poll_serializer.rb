@@ -7,4 +7,5 @@ class PollSerializer < ActiveModel::Serializer
     temp[:name] = object.user.name
     temp
   end
+
 end

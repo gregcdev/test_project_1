@@ -1,5 +1,7 @@
 class OptionsController < ApplicationController
 
+	before_action :authenticate
+
 	def vote
     @option = Option.find(params[:id])
     @option.votes.create
