@@ -17,6 +17,7 @@ Rails.application.routes.draw do
   end
 
   namespace :api, defaults: { format: 'json' } do
+    get 'google_oauth2' => "api#google_oauth2"
     namespace :v1 do
       resources :polls
       get 'key' => "polls#key_gen"

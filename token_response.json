@@ -1,0 +1,20 @@
+[
+  {
+    "iss": "accounts.google.com",
+    "aud": "475986543189-ud9pjbuo4f4c753pjhcl8jt1ge5sm7qo.apps.googleusercontent.com",
+    "sub": "107586300545058590682",
+    "email_verified": true,
+    "azp": "475986543189-42foimruccotqheg1gdrnat2f8lolq44.apps.googleusercontent.com",
+    "email": "gregchamberlain94@gmail.com",
+    "iat": 1442899037,
+    "exp": 1442902637,
+    "name": "Greg Chamberlain",
+    "picture": "https://lh3.googleusercontent.com/-FqpvaPr95F4/AAAAAAAAAAI/AAAAAAAACEQ/cgCDoerknv4/s96-c/photo.jpg",
+    "given_name": "Greg",
+    "family_name": "Chamberlain"
+  },
+  {
+    "alg": "RS256",
+    "kid": "fd7ad6772d51382ff30e2cd8da81e623740434e1"
+  }
+]
