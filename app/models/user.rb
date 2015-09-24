@@ -26,7 +26,8 @@ class User < ActiveRecord::Base
     create(
       provider: auth['provider'],
       uid: auth['uid'],
-      name: auth['name']
+      name: auth['name'],
+      email: auth['email']
     )
   end
 
