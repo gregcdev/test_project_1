@@ -51,7 +51,7 @@ class Api::ApiController < ActionController::Base
     #Signs the user in with the info from the token or creates the user if they do not exist
     u = User.sign_in_from_api(auth)
 
-    render json: {"user":{"id": u.id, "name": u.name, "api_key": u.api_key}}
+    render json: {"id": u.id, "name": u.name, "api_key": u.api_key}
   end
 
   private
