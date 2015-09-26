@@ -1,7 +1,7 @@
 class OptionSerializer < ActiveModel::Serializer
-  attributes :id, :name, :votes
+  attributes :id, :name, :vote_count
 
-  def votes
+  def vote_count
     object.votes.count
   end
 end
