@@ -12,7 +12,7 @@ class Api::V1::PollsController < Api::ApiController
 		limit = params[:limit] ||= 1
 		offset = params[:offset] ||= 0
 		@polls = Poll.order('created_at DESC').limit(limit).offset(offset)
-		render :json => @polls
+		render json: @polls
 	end
 
 	def show
