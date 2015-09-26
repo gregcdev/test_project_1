@@ -54,6 +54,10 @@ class Api::ApiController < ActionController::Base
     render json: {"id": u.id, "name": u.name, "api_key": u.api_key}
   end
 
+  def default_serializer_options
+    {root: false}
+  end
+
   private
 
   def authenticate
