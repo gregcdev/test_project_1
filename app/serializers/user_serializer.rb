@@ -1,11 +1,11 @@
 class UserSerializer < ActiveModel::Serializer
-  attributes :id, :name, :followers, :following
+  attributes :id, :name, :follower_count, :following_count
 
-  def followers
+  def follower_count
     object.followers.count
   end
 
-  def following
+  def following_count
     object.follows.count
   end
 end

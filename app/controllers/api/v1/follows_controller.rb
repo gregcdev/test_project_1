@@ -3,16 +3,6 @@ class Api::V1::FollowsController < Api::ApiController
   before_action :authenticate
   before_action :set_user, only: [:get_followers, :get_follows, :create, :destroy]
 
-  def get_followers
-    followers = Follow.find_by(target_id: @user.id)
-    render json: followers
-  end
-
-  def get_follows
-    follows = Follow.find_by(follower_id: @user.id)
-    render json: follows
-  end
-
   def create
 
     if @follow = Follow.find_by(follower_id: @current_user.id, target_id: @user.id)
