@@ -4,6 +4,7 @@ class PollSerializer < ActiveModel::Serializer
 
   def user
     temp = {}
+    temp[:id] = object.user.id
     temp[:name] = object.user.name
     temp
   end
